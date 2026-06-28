@@ -8,34 +8,24 @@ import traitlets
 def _load_profiles() -> list[dict[str, object]]:
     csv_path = Path(__file__).resolve().parents[1] / "steel_profiles.csv"
     with csv_path.open(newline="", encoding="utf-8") as handle:
-        rows = list(csv.DictReader(handle))
-
-    aliases = rows[0]
-    profiles = []
-    for row in rows[1:]:
-        profile = {alias: _value(row[column]) for column, alias in aliases.items()}
-        profile.update(
-            {
-                "profile": row["Profile name"],
-                "type": row["Profile type"],
-                "standard": row["Standard"],
-                "series": row["Series description"],
-                "shape": row["Shape family"],
-                "h": _number(row["Overall depth h (mm)"]),
-                "b": _number(row["Overall width b (mm)"]),
-                "t": _number(row["Wall thickness t (mm)"]),
-                "tw": _number(row["Web thickness tw (mm)"]),
-                "tf": _number(row["Flange thickness tf (mm)"]),
-                "r": _number(row["Root radius r (mm)"]),
-                "ro": _number(row["Outer corner radius ro (mm)"]),
-                "ri": _number(row["Inner corner radius ri (mm)"]),
-                "weight": _number(row["Mass per metre (kg/m)"]),
-                "area": _number(row["Cross-section area A (mm2)"]),
+        reader = csv.DictReader(handle)
+        aliases = next(reader)
+        profiles = []
+        for row in reader:
+            profile = {
+                _without_unit_suffix(alias): _value(row[column])
+                for column, alias in aliases.items()
             }
-        )
-        profiles.append(profile)
+            profiles.append(profile)
 
     return profiles
+
+
+def _without_unit_suffix(name: str) -> str:
+    for suffix in ("_kg_m", "_mm6", "_mm4", "_mm3", "_mm2", "_mm", "_m"):
+        if name.endswith(suffix):
+            return name[: -len(suffix)]
+    return name
 
 
 def _value(value: str) -> object:
