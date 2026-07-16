@@ -682,6 +682,10 @@ export default { render };
 
 The actual implementation should avoid replacing a focused input on every keystroke. It may use keyed reconciliation by `table_id` and `row_id`, or capture and restore focus/selection when a full render is unavoidable.
 
+### VS Code notebook keyboard compatibility
+
+VS Code's Jupyter keymap handles single-letter notebook commands such as `A` and `B` in the host process when `notebookOutputInputFocused` is false, so stopping `keydown` propagation alone is insufficient. The AFM keeps control key events inside the widget and uses a `focusin` compatibility bridge to VS Code's `.output` boundary. That bridge walks the composed DOM across shadow hosts and temporarily marks closed-shadow hosts as editable while a control owns focus, allowing VS Code's read/write detector to set the correct context and suppress notebook shortcuts during normal typing.
+
 `render` is executed once for every view displaying the widget instance, so all view-specific DOM and listeners belong inside `render`. It must return cleanup logic or use the supplied `AbortSignal`. No DOM nodes, timers, observers, or event handlers may survive after the view is removed.
 
 Event delegation is recommended: register `input`, `change`, and `click` listeners once on the widget root, locate actions through `data-action`, `data-table-id`, and `data-row-id`, and register listeners with `{ signal }` where supported.
