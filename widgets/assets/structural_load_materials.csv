@@ -1,0 +1,9 @@
+material_id,display_name,calculation_type,default_thickness_mm,density_kn_m3,fixed_load_kn_m2,category,active,sort_order,description,source
+concrete_levelling,Concrete levelling layer,calculated,50,20.0,,concrete,true,10,,
+thermal_insulation,Thermal insulation,calculated,300,0.8,,insulation,true,20,,
+roofing_membrane,Roofing membrane,fixed,,,0.30,roofing,true,30,,
+finishing_layer,Finishing layer,calculated,25,10.0,,finish,true,40,,
+building_services,Building services,fixed,,,0.20,allowance,true,50,,
+reinforced_concrete,Reinforced concrete slab,calculated,200,25.0,,concrete,true,60,,
+cement_screed,Cement screed,calculated,60,20.0,,concrete,true,70,,
+mineral_wool,Mineral wool,calculated,200,0.8,,insulation,true,80,,

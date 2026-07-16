@@ -3,6 +3,7 @@ from .first import First
 from .load_widget import LoadWidget
 from .weights_widget import WeightsWidget
 from .data import MATERIALS
+from .structural_load_widget import StructuralLoadWidget
 
 __all__ = [
     "Sections",
@@ -10,4 +11,5 @@ __all__ = [
     "LoadWidget",
     "WeightsWidget",
     "MATERIALS",
+    "StructuralLoadWidget",
 ]

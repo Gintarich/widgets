@@ -1,0 +1,2 @@
+anywidget>=0.9,<1
+traitlets>=5.9,<6

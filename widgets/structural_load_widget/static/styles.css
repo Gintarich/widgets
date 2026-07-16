@@ -1,0 +1,439 @@
+.structural-load-widget {
+  --slw-bg: var(--jp-layout-color1, #f7f8fa);
+  --slw-panel: var(--jp-layout-color0, #fff);
+  --slw-text: var(--jp-ui-font-color1, #172033);
+  --slw-muted: var(--jp-ui-font-color2, #667085);
+  --slw-border: var(--jp-border-color2, #d6dae1);
+  --slw-soft: var(--jp-layout-color2, #f1f3f6);
+  --slw-primary: var(--jp-brand-color1, #1769c2);
+  --slw-primary-dark: var(--jp-brand-color0, #0e539c);
+  --slw-danger: var(--jp-error-color1, #b42318);
+  --slw-warning: #9a6700;
+  display: block;
+  color: var(--slw-text);
+  font: 14px/1.4 var(--jp-ui-font-family, "Segoe UI", sans-serif);
+}
+
+.structural-load-widget .slw-root {
+  padding: 14px;
+  border: 1px solid var(--slw-border);
+  background: var(--slw-bg);
+}
+
+.structural-load-widget .slw-status-bar,
+.structural-load-widget .slw-project-actions,
+.structural-load-widget .slw-title-row,
+.structural-load-widget .slw-summary,
+.structural-load-widget .slw-confirm,
+.structural-load-widget .slw-confirm > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.structural-load-widget .slw-status-bar {
+  justify-content: space-between;
+  padding: 8px 10px;
+  border: 1px solid var(--slw-border);
+  background: var(--slw-panel);
+}
+
+.structural-load-widget .slw-status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  font-weight: 600;
+}
+
+.structural-load-widget .slw-status small {
+  color: var(--slw-muted);
+  font-weight: 400;
+}
+
+.structural-load-widget .slw-status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #27864b;
+}
+
+.structural-load-widget .slw-status--dirty .slw-status-dot,
+.structural-load-widget .slw-status--saving .slw-status-dot {
+  background: #d49b12;
+}
+
+.structural-load-widget .slw-status--error .slw-status-dot {
+  background: var(--slw-danger);
+}
+
+.structural-load-widget button,
+.structural-load-widget input,
+.structural-load-widget select {
+  box-sizing: border-box;
+  border: 1px solid var(--slw-border);
+  border-radius: 0;
+  background: var(--slw-panel);
+  color: var(--slw-text);
+  font: inherit;
+}
+
+.structural-load-widget button {
+  min-height: 34px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.structural-load-widget button:hover {
+  border-color: var(--slw-primary);
+}
+
+.structural-load-widget button:focus-visible,
+.structural-load-widget input:focus-visible,
+.structural-load-widget select:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--slw-primary) 28%, transparent);
+  outline-offset: 1px;
+  border-color: var(--slw-primary);
+}
+
+.structural-load-widget .slw-primary,
+.structural-load-widget .slw-add-table {
+  border-color: var(--slw-primary);
+  background: var(--slw-primary);
+  color: #fff;
+  font-weight: 650;
+}
+
+.structural-load-widget .slw-primary:hover,
+.structural-load-widget .slw-add-table:hover {
+  background: var(--slw-primary-dark);
+}
+
+.structural-load-widget .slw-tables {
+  display: grid;
+  gap: 18px;
+  margin: 14px 0;
+}
+
+.structural-load-widget .slw-table {
+  border: 1px solid var(--slw-border);
+  background: var(--slw-panel);
+}
+
+.structural-load-widget .slw-title-row {
+  align-items: end;
+  padding: 12px;
+  border-bottom: 1px solid var(--slw-border);
+  background: var(--slw-soft);
+}
+
+.structural-load-widget .slw-title-row label {
+  display: grid;
+  flex: 1 1 auto;
+  gap: 4px;
+  color: var(--slw-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.structural-load-widget .slw-title-row label:last-child {
+  flex: 0 1 210px;
+}
+
+.structural-load-widget .slw-title-row input {
+  width: 100%;
+  min-height: 38px;
+  padding: 7px 9px;
+  color: var(--slw-text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.structural-load-widget .slw-header,
+.structural-load-widget .slw-row {
+  display: grid;
+  grid-template-columns: minmax(42px, 5fr) minmax(190px, 42fr) minmax(116px, 16fr) minmax(106px, 15fr) minmax(110px, 16fr) minmax(52px, 6fr);
+}
+
+.structural-load-widget .slw-header {
+  background: var(--slw-soft);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.structural-load-widget .slw-header > div,
+.structural-load-widget .slw-cell {
+  min-width: 0;
+  padding: 9px 8px;
+  border-right: 1px solid var(--slw-border);
+  border-bottom: 1px solid var(--slw-border);
+}
+
+.structural-load-widget .slw-header > div:last-child,
+.structural-load-widget .slw-cell:last-of-type {
+  border-right: 0;
+}
+
+.structural-load-widget .slw-cell {
+  display: flex;
+  align-items: center;
+}
+
+.structural-load-widget .slw-number,
+.structural-load-widget .slw-density,
+.structural-load-widget .slw-load,
+.structural-load-widget .slw-action {
+  justify-content: center;
+  text-align: center;
+}
+
+.structural-load-widget .slw-row--invalid {
+  box-shadow: inset 4px 0 var(--slw-danger);
+  background: color-mix(in srgb, var(--slw-danger) 5%, var(--slw-panel));
+}
+
+.structural-load-widget .slw-cell select,
+.structural-load-widget .slw-unit-field,
+.structural-load-widget .slw-unit-field input {
+  width: 100%;
+}
+
+.structural-load-widget .slw-cell select,
+.structural-load-widget .slw-unit-field input {
+  min-height: 36px;
+  padding: 6px 8px;
+}
+
+.structural-load-widget .slw-unit-field {
+  display: flex;
+  align-items: stretch;
+}
+
+.structural-load-widget .slw-unit-field span {
+  display: grid;
+  place-items: center;
+  padding: 0 7px;
+  border: 1px solid var(--slw-border);
+  border-left: 0;
+  background: var(--slw-soft);
+  color: var(--slw-muted);
+  font-size: 12px;
+}
+
+.structural-load-widget .slw-unit {
+  margin-left: 4px;
+  color: var(--slw-muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.structural-load-widget .slw-na {
+  color: var(--slw-muted);
+}
+
+.structural-load-widget .slw-icon-button {
+  display: grid;
+  width: 38px;
+  min-height: 38px;
+  padding: 7px;
+  place-items: center;
+  border-color: transparent;
+  color: var(--slw-danger);
+}
+
+.structural-load-widget .slw-icon-button svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.structural-load-widget .slw-add-row {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--slw-border);
+  background: var(--slw-soft);
+  color: var(--slw-primary);
+  font-weight: 650;
+}
+
+.structural-load-widget .slw-summary {
+  justify-content: flex-end;
+  padding: 12px;
+}
+
+.structural-load-widget .slw-summary > div {
+  display: grid;
+  min-width: 205px;
+  gap: 2px;
+  padding: 8px 12px;
+  border-left: 3px solid var(--slw-border);
+}
+
+.structural-load-widget .slw-summary span,
+.structural-load-widget .slw-summary small {
+  color: var(--slw-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.structural-load-widget .slw-summary strong {
+  font-size: 17px;
+}
+
+.structural-load-widget .slw-summary .slw-accepted {
+  border-left-color: var(--slw-primary);
+  background: color-mix(in srgb, var(--slw-primary) 7%, transparent);
+}
+
+.structural-load-widget .slw-summary .slw-accepted strong {
+  color: var(--slw-primary);
+  font-size: 20px;
+}
+
+.structural-load-widget .slw-summary--invalid strong,
+.structural-load-widget .slw-summary--invalid .slw-accepted strong {
+  color: var(--slw-danger);
+}
+
+.structural-load-widget .slw-stale-note {
+  margin: -6px 12px 10px;
+  color: var(--slw-danger);
+  text-align: right;
+}
+
+.structural-load-widget .slw-remove-table {
+  margin: 0 12px 12px;
+  border-color: transparent;
+  color: var(--slw-danger);
+}
+
+.structural-load-widget .slw-confirm {
+  justify-content: space-between;
+  margin: 0 12px 12px;
+  padding: 10px;
+  border: 1px solid color-mix(in srgb, var(--slw-danger) 50%, var(--slw-border));
+  background: color-mix(in srgb, var(--slw-danger) 7%, var(--slw-panel));
+}
+
+.structural-load-widget .slw-danger {
+  border-color: var(--slw-danger);
+  background: var(--slw-danger);
+  color: #fff;
+}
+
+.structural-load-widget .slw-messages {
+  display: grid;
+  gap: 4px;
+  margin: 8px 0;
+}
+
+.structural-load-widget .slw-message {
+  padding: 7px 10px;
+  border-left: 3px solid var(--slw-warning);
+  background: color-mix(in srgb, var(--slw-warning) 8%, var(--slw-panel));
+}
+
+.structural-load-widget .slw-message--error {
+  border-left-color: var(--slw-danger);
+  background: color-mix(in srgb, var(--slw-danger) 7%, var(--slw-panel));
+}
+
+.structural-load-widget .slw-table > .slw-messages {
+  margin: 8px 12px;
+}
+
+.structural-load-widget .slw-row-message {
+  grid-column: 1 / -1;
+}
+
+.structural-load-widget .slw-row-message .slw-messages {
+  margin: 0;
+}
+
+.structural-load-widget .slw-empty {
+  padding: 28px;
+  border: 1px dashed var(--slw-border);
+  background: var(--slw-panel);
+  color: var(--slw-muted);
+  text-align: center;
+}
+
+.structural-load-widget .slw-add-table {
+  width: 100%;
+}
+
+@media (max-width: 760px) {
+  .structural-load-widget .slw-header {
+    display: none;
+  }
+
+  .structural-load-widget .slw-row {
+    grid-template-columns: 42px minmax(0, 1fr);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--slw-border);
+  }
+
+  .structural-load-widget .slw-cell {
+    border: 0;
+  }
+
+  .structural-load-widget .slw-cell:not(.slw-number)::before {
+    width: 82px;
+    flex: 0 0 82px;
+    color: var(--slw-muted);
+    content: attr(data-label);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .structural-load-widget .slw-number {
+    grid-row: 1 / span 5;
+    align-items: start;
+    font-weight: 700;
+  }
+
+  .structural-load-widget .slw-material,
+  .structural-load-widget .slw-thickness,
+  .structural-load-widget .slw-density,
+  .structural-load-widget .slw-load,
+  .structural-load-widget .slw-action {
+    grid-column: 2;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .structural-load-widget .slw-row-message {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .structural-load-widget .slw-root {
+    padding: 8px;
+  }
+
+  .structural-load-widget .slw-status-bar,
+  .structural-load-widget .slw-title-row,
+  .structural-load-widget .slw-summary,
+  .structural-load-widget .slw-confirm {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .structural-load-widget .slw-project-actions button {
+    flex: 1;
+  }
+
+  .structural-load-widget .slw-title-row label:last-child,
+  .structural-load-widget .slw-summary > div {
+    min-width: 0;
+    flex-basis: auto;
+  }
+}
